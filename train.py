@@ -29,7 +29,7 @@ def run_training(train_loader, test_loader, device, args):
     num_outputs = 1
 
     # Instantiate model
-    model = CSTE.DINO_EXP(input_dim, hidden_dim, lstm_layers, num_outputs).to(device)
+    model = CSTE.CSTEformer(input_dim, hidden_dim, lstm_layers, num_outputs).to(device)
 
     # Optim & Scheduler
     optim = Adam(model.parameters(), lr=args.lr)
@@ -184,3 +184,4 @@ def evaluate_model(data_loader, model, mse_loss, mae_loss, device):
     ccc = numerator / (denominator + eps)
 
     return mse_avg, mae_avg, ccc.item()
+
